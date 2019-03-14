@@ -6,7 +6,7 @@ use Framework\Core\Controller;
 /**
  * Classe: Controller
  * =============================================================================
- * Objectivo: Controller Master
+ * Objectivo: Controller para teste
  * 
  * 
  * 
@@ -21,7 +21,6 @@ class TestController extends Controller
 
     public function index()
     {
-        return "Teste OK";
-        return json_encode(["message" => "Teste OK"]);
+        return toJSON(["message" => "Teste OK"]);
     }
 }

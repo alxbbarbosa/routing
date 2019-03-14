@@ -1,6 +1,11 @@
 <?php
+/**
+ * Set your routes here
+ */
 
-
+$route->get('/', function() {
+    echo "Página inicial";
+});
 
 $route->get('teste/{id}/teste/{id2}', function($id, $id2) {
     echo "Teste variáveis {$id} e {$id2}!";

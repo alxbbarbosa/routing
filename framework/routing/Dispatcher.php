@@ -62,9 +62,9 @@ class Dispatcher
                 $return = call_user_func($callback);
             }
 
-            if (!is_null($return) && is_scalar($return) && !$this->isJSON($return)) {
-                echo json_encode([$return], JSON_FORCE_OBJECT);
-            } else if ($this->isJSON($return)) {
+            if (!is_null($return) && is_scalar($return) && !isJSON($return)) {
+                echo toJSON($return);
+            } else if (isJSON($return)) {
                 echo $return;
             } else {
                 return $return;
@@ -72,8 +72,5 @@ class Dispatcher
         }
     }
 
-    protected function isJSON($string)
-    {
-        return is_string($string) && is_array(json_decode($string, true)) && (json_last_error() == JSON_ERROR_NONE) ? true : false;
-    }
+    
 }

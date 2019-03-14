@@ -23,13 +23,17 @@ class Router
 
     public function request()
     {
+
         $route = filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING);
+
+        if (is_null(filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING))) {
+            $route = '/';
+        }
 
         if (isset($this->routes['GET']) && isset($route)) {
 
-
             $routes = $this->routes['GET'];
-            $pieces = explode('/', $route);
+            $pieces = array_filter(explode('/', $route));
 
             if (in_array($route, array_keys($this->routes['GET']))) {
                 return $this->routes['GET'][$route];
@@ -45,7 +49,7 @@ class Router
                             $vars = $this->getVars($value->uri);
                             $tmpRoute = [];
                             $values = [];
-                            
+
                             foreach ($piecesRoute as $k => $v) {
                                 if (!in_array($k, array_keys($vars)) && $v == $pieces[$k]) {
                                     $tmpRoute[$k] = $v;

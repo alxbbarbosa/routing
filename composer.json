@@ -12,6 +12,10 @@
             "Framework\\Core\\":"framework/core",
             "Framework\\Routing\\":"framework/routing",
             "App\\Http\\Controller\\":"app/Http/Controller"
-        }
+        },
+        "files": [
+            "framework/helpers/response.php",
+            "framework/helpers/redirect.php"
+        ]
     }
 }
