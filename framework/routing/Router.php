@@ -13,12 +13,12 @@ class Router
 
     public function get($uri, $callback)
     {
-        $this->add('GET', $uri, $callback);
+        return $this->add('GET', $uri, $callback);
     }
 
     public function post($uri, $callback)
     {
-        $this->add('POST', $uri, $callback);
+        return $this->add('POST', $uri, $callback);
     }
 
     public function request()
@@ -81,7 +81,9 @@ class Router
 
     protected function add($method, $uri, $callback)
     {
-        $this->routes[$method][$uri] = new Route($method, $uri, $callback);
+        $route = new Route($method, $uri, $callback);
+        $this->routes[$method][$uri] = $route;
+        return $route;
     }
 
     protected function getVars($uri)

@@ -23,6 +23,7 @@ class Route
     public $params;
     public $values;
     public $size;
+    protected $name;
 
     public function __construct(string $method, string $uri, $callback)
     {
@@ -32,6 +33,16 @@ class Route
         $this->params = [];
 
         $this->parseUri($uri);
+    }
+
+    public function name(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     protected function parseUri($uri)
