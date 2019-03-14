@@ -15,7 +15,8 @@
         },
         "files": [
             "framework/helpers/response.php",
-            "framework/helpers/redirect.php"
+            "framework/helpers/redirect.php",
+            "framework/helpers/basic.php"
         ]
     }
 }

@@ -20,4 +20,4 @@ $route->get('teste', function() {
     echo "Tudo ok";
 });
 
-$route->get('teste-controller', 'App\Http\Controller\TestController@index');
+$route->get('teste-controller', 'App\Http\Controller\TestController@index')->name('teste.index');

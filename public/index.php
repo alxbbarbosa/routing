@@ -1,13 +1,17 @@
 <?php
 require_once '../bootstrap.php';
 
+try {
+    $route = new \Framework\Routing\Router;
 
-$route = new \Framework\Routing\Router;
+    require '../routes/web.php';
 
-require '../routes/web.php';
+    $request = $route->request();
 
-$request = $route->request();
 
-if ($request) {
-    new Framework\Routing\Dispatcher($request);
+    if ($request) {
+        new Framework\Routing\Dispatcher($request);
+    }
+} catch (\Exception $e) {
+    dd($e->getTrace());
 }
